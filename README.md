@@ -2,7 +2,7 @@
 
 ## Introduction
 
-eMeet is a web application designed during a one-and-a-half-month internship at King ICT. Targeted primarily at students, this application serves as a centralized hub for discovering, enrolling, and attending various educational workshops during weekends. The front end is developed using React, while the back end leverages SQL, .NET, and C# technologies. 
+eMeet is a web application designed during a one-and-a-half-month internship at King ICT. Targeted primarily at students, this application serves as a centralized hub for discovering, enrolling, and attending various educational workshops during weekends. The front end is developed using React, while the back end leverages SQL, ASP.NET, and C# technologies. 
 
 ## Features
 
