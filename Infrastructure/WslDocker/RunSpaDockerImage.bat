@@ -1,0 +1,1 @@
+wsl docker run -p 5002:8081 e-meet-spa

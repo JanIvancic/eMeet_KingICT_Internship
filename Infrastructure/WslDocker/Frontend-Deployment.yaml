@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t1-spa-deployment
+  namespace: king-akademija-2023
+spec:
+  selector:
+    matchLabels:
+      app: t1-spa
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: t1-spa
+    spec:
+      containers:
+        - name: t1-spa-container
+          image: >-
+            default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa:9
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: t1-spa-service
+  namespace: king-akademija-2023
+spec:
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  internalTrafficPolicy: Cluster
+  selector:
+    app: t1-spa
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: t1-spa-route
+  namespace: king-akademija-2023
+spec:
+  host: ka2023-t1-spa.apps.ocp.dev.king-ict.corp
+  to:
+    kind: Service
+    name: t1-spa-service
+    weight: 100
+  port:
+    targetPort: 8081
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

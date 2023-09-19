@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t1-api-deployment
+  namespace: king-akademija-2023
+spec:
+  selector:
+    matchLabels:
+      app: t1-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: t1-api
+    spec:
+      containers:
+        - name: t1-api-container
+          image: >-
+            default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-api:5
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://*:8080
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: t1-api-service
+  namespace: king-akademija-2023
+spec:
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  internalTrafficPolicy: Cluster
+  selector:
+    app: t1-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+

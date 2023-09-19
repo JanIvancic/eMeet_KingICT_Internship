@@ -1,0 +1,2 @@
+wsl docker tag e-meet-api:latest default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-api:5
+wsl docker push default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-api:5

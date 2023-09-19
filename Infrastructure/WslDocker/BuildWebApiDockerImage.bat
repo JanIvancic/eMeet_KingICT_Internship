@@ -1,0 +1,1 @@
+wsl docker build ../../Backend -t e-meet-api:latest -f ../../Backend/KingICT.Academy2023.eMeet.WebAPI/Dockerfile

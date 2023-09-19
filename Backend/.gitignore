@@ -1,0 +1,51 @@
+# .NET 6.0 specific
+/.NET6.0/
+obj/
+bin/
+*.userprefs
+*.vscode
+*.vs/
+*.vsix
+*.user
+
+# Visual Studio files
+*.suo
+*.cache
+*.csproj.user
+*.pdb
+*.log
+*.dll
+*.exe
+*.cache
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+/TestResults/
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+build/
+*.publishproj
+*.msbuildproj
+
+# Roslyn cache directories
+*.ide/
+*.opendb
+
+# Resharper specific
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+
+# Build results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_AssemblyVersion.cs

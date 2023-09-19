@@ -1,0 +1,35 @@
+Push image-a na image stream upute
+
+- na OKD kreirati imageStream (obavljeno ručno, može se preko konzole)
+	- na OKD-u će se dobit naziv image-a koji će trebat u nastavku
+	
+	Image repository
+	image-registry.openshift-image-registry.svc:5000/king-akademija-2023/t1-spa
+	
+	Public image repository
+	default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa
+
+- tagirati lokalni image bildan tako da odgovara onom u ImageStream-u
+	wsl docker tag e-meet-spa:latest default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa:1
+
+- napraviti login (na OKD) (spoijit se na okd i izgenerirati login token)
+	wsl oc login --token=sha256~p...0 --server=https://api.ocp.dev.king-ict.corp:6443
+
+- saznati username i password iz OKD-a preko OC toola
+	username: wsl oc whoami
+	password: wsl oc whoami --show-token
+	
+- ulogirati se u docker 
+	da bi ovo radilo, potrebno je uspostavit SSL, stavit root certifikat oKD-a u cert store
+	https://stackoverflow.com/questions/50768317/docker-pull-certificate-signed-by-unknown-authority
+	
+	wsl docker login -u '{{username dobiven komandom oc whoami}}' -p '{{password dobiven komandom wsl oc whoami --show-token}}' default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp
+	
+- pushati image na OKD image registry
+
+	wsl docker push default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa:1
+	
+- kada je image uspješno pushan, kreirati deployment i servis, najlakše uzet deployment2.yaml i kroz sučelje gore desno od OKD-a odabrat plus i pejstat 
+
+- još je potrebno napraviti rutu kroz OKD admin sučelje 
+	sve se lako snaći, samo pod HOST upisati {{PROIZVOLJAN_NAZIV}}.apps.ocp.dev.king-ict.corp

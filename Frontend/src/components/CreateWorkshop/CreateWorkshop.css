@@ -1,0 +1,216 @@
+.div-centered {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* If you want to center the parent */
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Two columns of equal width */
+    gap: 20px; /* Gap between grid items */
+    margin-bottom: 50px;
+}
+
+.grid-container .description {
+    grid-row: span 3; /* Span 3 rows */
+}
+
+.grid-container .mode {
+    grid-row: span 1; /* Span 1 row */
+}
+
+.form-grid {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+    height: 400px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1; /* Make the form column grow to fill available space */
+}
+
+.map {
+    flex-basis: 800px; /* Adjust this width to your preference for the map */
+    height: 400px; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between; /* This will push the buttons to the edges */
+    align-items: center; /* Center the buttons vertically */
+    margin-top: 8vh;
+    margin-bottom: 5vh;
+}
+
+.button {
+    padding: 12px 24px;  
+    font-size: 16px;     
+    height: 50px;
+    width: 200px;
+    border-radius: 8px;  /* Rounded corners */
+    border: none;        /* Remove any default border */
+    outline: none;       /* Remove focus outline */
+    cursor: pointer;     /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    font-weight: bold !important;   /* Make the text inside the buttons bold */
+}
+
+.buttons .grey-button {
+    background-color: #ccc !important; 
+    color: #333 !important;            
+    &:hover {
+        background-color: #bbb !important;  /* Slightly darker on hover */
+    }
+}
+
+.buttons .button:not(.grey-button) {
+    background-color: #007BFF; /* Blue */
+    color: white;              
+    &:hover {
+        background-color: #0069d9;  /* Slightly darker blue on hover */
+    }
+}
+
+.image-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 3vh;
+  }
+  
+  .image-preview {
+    width: 20vh;
+    height: 10vh;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Hide overflow to prevent checkmark from being cut off */
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover entire space */
+    transition: transform 0.3s; /* Add a smooth transition on hover */
+  }
+  
+  .image-preview:hover .image {
+    transform: scale(1.1); /* Enlarge image on hover */
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s; /* Add a transition for opacity and scale */
+  }
+  
+  .image-preview.selected .image-overlay {
+    opacity: 1;
+    transform: scale(1.1); /* Enlarge overlay on selection */
+  }
+  
+  .checkmark {
+    color: white;
+    font-size: 100px;
+    opacity: 0;
+    transition: opacity 0.3s; /* Add fade-in animation for checkmark */
+  }
+  
+  .image-preview.selected .checkmark {
+    opacity: 1;
+  }
+  
+  .error-message {
+    color: #f44336; /* Material-UI default error color */
+    font-size: 0.75rem; /* Smaller text to match Material-UI error text size */
+    margin-top: 4px; /* Small top margin */
+    font-weight: 400; /* Normal font weight */
+    line-height: 1.66; /* Line height similar to Material-UI error text */
+  }
+  
+
+  .admin-delete-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .admin-delete-button:hover {
+    color: red;
+  }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* Dialog Title */
+.workshop-dialog-title {
+  font-size: 28px;  /* Increase the font size */
+  font-weight: 600;
+  color: #333;
+  padding: 10px; /* Add or adjust padding */
+}
+
+/* Dialog Content */
+.workshop-dialog-content {
+  font-size: 18px;  /* Increase the font size */
+  color: #666;
+  padding: 10px; /* Add or adjust padding */
+}
+
+/* Dialog Paper Root (this is the part where we set max-height)*/
+.workshop-shadowed-paper {
+  max-height: 200px;  /* Limit the max height */
+}
+
+/* Dialog Actions */
+.workshop-dialog-actions {
+  margin-top: 5px;  /* Slightly reduced margin-top */
+  padding: 10px; /* Add or adjust padding */
+}
+
+/* Cancel Button */
+.workshop-cancel-button {
+  background-color: #f1f1f1;
+  color: #333;
+  text-transform: none;
+}
+
+/* Confirm Button */
+.workshop-confirm-button {
+  background-color: #007bff;
+  color: white;
+  text-transform: none;
+}

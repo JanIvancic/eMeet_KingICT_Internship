@@ -1,0 +1,1 @@
+wsl docker build ../../Frontend -t e-meet-spa:latest -f ../../Frontend/Dockerfile

@@ -1,0 +1,2 @@
+wsl docker tag e-meet-spa:latest default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa:9
+wsl docker push default-route-openshift-image-registry.apps.ocp.dev.king-ict.corp/king-akademija-2023/t1-spa:9
